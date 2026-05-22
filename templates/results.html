@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Results - Lead Extractor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Results</h1>
+    <p>
+      <strong>Site:</strong> {{ site }} |
+      <strong>Query:</strong> {{ query }} |
+      <strong>City:</strong> {{ city }} |
+      <strong>Location:</strong> {{ location }} |
+      <strong>Pages:</strong> {{ pages }}
+    </p>
+    <p>
+      <a class="download" href="{{ url_for('download', csv_name=csv_name) }}">Download CSV</a>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <th>Source URL</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for r in table %}
+        <tr>
+          <td>{{ r.name }}</td>
+          <td>{{ r.email }}</td>
+          <td>{{ r.phone }}</td>
+          <td><a href="{{ r.website }}" target="_blank">{{ r.website }}</a></td>
+          <td><a href="{{ r.source_url }}" target="_blank">{{ r.source_url }}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="hint">Note: Only the first 200 rows are shown above for quick viewing; the CSV contains everything.</p>
+
+    <p><a href="{{ url_for('index') }}">&larr; New Search</a></p>
+  </div>
+</body>
+</html>

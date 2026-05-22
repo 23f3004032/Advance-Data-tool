@@ -1,0 +1,14 @@
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#0b0b0f; color:#eaeaea; }
+.container { max-width: 980px; margin: 40px auto; background:#14141b; padding: 24px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+h1 { margin-top: 0; }
+label { display:block; margin-top:12px; font-weight:600; }
+input[type=text], input[type=number], select { width:100%; padding:10px; margin-top:6px; border-radius:8px; border:1px solid #2a2a36; background:#0f0f14; color:#eaeaea; }
+input[type=checkbox] { transform: scale(1.2); margin-left:6px; }
+button { margin-top:16px; padding:12px 20px; border:0; border-radius:10px; background:#7c5cff; color:white; font-weight:700; cursor:pointer; }
+button:hover { filter:brightness(1.1); }
+
+table { width:100%; border-collapse: collapse; margin-top:16px; }
+th, td { border-bottom:1px solid #2a2a36; padding:10px; text-align:left; }
+a { color:#8ab4ff; text-decoration:none; }
+a.download { background:#22c55e; color:#001a09; padding:8px 12px; border-radius:8px; font-weight:700; }
+.hint { opacity:0.8; font-size:0.95rem; }

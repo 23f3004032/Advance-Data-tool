@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Lead Extractor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Lead Extractor</h1>
+    <form method="POST" action="{{ url_for('scrape') }}">
+      <label>Site</label>
+      <select name="site" required>
+        <option value="justdial">Justdial</option>
+        <option value="yelp">Yelp</option>
+        <option value="linkedin">LinkedIn (jobs)</option>
+      </select>
+
+      <label>Query (e.g., Web Developer)</label>
+      <input type="text" name="query" placeholder="Web Developer" required />
+
+      <label>City (for Justdial)</label>
+      <input type="text" name="city" value="{{ config.DEFAULT_CITY if config.DEFAULT_CITY else '' }}" placeholder="Mumbai" />
+
+      <label>Location (for Yelp)</label>
+      <input type="text" name="location" value="{{ config.DEFAULT_LOCATION if config.DEFAULT_LOCATION else '' }}" placeholder="Mumbai" />
+
+      <label>Pages to Scan</label>
+      <input type="number" name="pages" min="1" max="20" value="1" />
+
+      <label>Headless</label>
+      <input type="checkbox" name="headless" />
+
+      <label>Login Pause (seconds)</label>
+      <input type="number" name="login_wait" min="10" max="180" value="45" />
+
+      <button type="submit">Start Extraction</button>
+    </form>
+
+    <p class="hint">
+      Tip: A Chrome window will open.<br>
+      If the site shows "Sign in", log in with your account in that window. The app waits for the "Login Pause" duration, then starts scraping.
+      Your session persists inside <code>profiles/&lt;site&gt;/</code>.
+    </p>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
